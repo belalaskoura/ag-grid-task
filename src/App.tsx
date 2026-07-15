@@ -1,5 +1,3 @@
-// Necessary imports for ag-grid
-import React from 'react';
 import {AgGridProvider, AgGridReact} from 'ag-grid-react';
 import { AllCommunityModule} from 'ag-grid-community';
 import { themeBalham, ColDef } from 'ag-grid-community';
@@ -16,24 +14,23 @@ function isEditable(params: {data: Character}){
 }
 
 export function App(){
-  const [rowData, setRowData] = useState<Character[]>([]);   // State to hold the row data fetched from the API
+  const [rowData, setRowData] = useState<Character[]>([]);   
 
   // Grid options including column definitions and types
   const colData: ColDef<Character>[] = [
-    {field: 'id', headerName:'ID',sortable: true}, // Column for ID with sorting enabled
-    {field: 'name', headerName:'Name',filter:true, editable: true}, // Column for Name with filtering and editing enabled
-    {field: 'status', headerName:'Status',editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: {values: ['Dead','Alive','Unknown']}}, // Column for Status with editing enabled and a dropdown editor
-    {field: 'species', headerName:'Species'}, // Column for Species
-    {field: 'gender', headerName:'Gender', editable: true, cellEditor: GenderDropdown }, // Column for Gender with editing enabled using the custom GenderDropdown component
-    {field: 'origin.name', headerName:'Origin'}, // Column for Origin
-    {field: 'location.name', headerName:'Current Location',type: "specialColumn"} // Column for Current Location with custom editable logic
+    {field: 'id', headerName:'ID',sortable: true},
+    {field: 'name', headerName:'Name',filter:true, editable: true},
+    {field: 'status', headerName:'Status',editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: {values: ['Dead','Alive','Unknown']}}, 
+    {field: 'species', headerName:'Species'}, 
+    {field: 'gender', headerName:'Gender', editable: true, cellEditor: GenderDropdown }, 
+    {field: 'location.name', headerName:'Current Location',type: "specialColumn"} 
     ]
 
     // Custom column types to handle editable logic and styling
     const columnTypes: any = {
       specialColumn:{
         editable: (params: {data: Character}) => {
-          return isEditable(params) // Check if the cell is editable based on the gender
+          return isEditable(params) 
         },
         cellStyle: (params: {data: Character}) => {
           if(!isEditable(params)){
@@ -49,11 +46,10 @@ export function App(){
   // Effect to update the row data when the API data changes
   useEffect(() => {
     if(data){
-      setRowData(data); // Set the row data to the results from the API
+      setRowData(data);
     }
   }, [data]);
 
-  // Render the ag-grid with the fetched data and defined columns
   return(
       <AgGridProvider modules={modules}> 
         <div style={{height: 500}}>
