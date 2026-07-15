@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import {GenderDropdown} from './components/GenderDropdown'
 import './App.css'
 
-const modules = [AllCommunityModule];
+const  modules = [AllCommunityModule];
 // Editable column logic
 let editableGender = "Male";
 function isEditable(params){
@@ -50,7 +50,7 @@ function App(){
       console.log(data)
       return setRowData(data.results)})
   }, [])
-  
+
   return(
     <AgGridProvider modules={modules}>
       <div style={{height: 500}}>
