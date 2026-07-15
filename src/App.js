@@ -25,12 +25,12 @@ function App(){
     {field: 'species', headerName:'Species'}, // Column for Species
     {field: 'gender', headerName:'Gender', editable: true, cellEditor: GenderDropdown }, // Column for Gender with editing enabled using the custom GenderDropdown component
     {field: 'origin.name', headerName:'Origin'}, // Column for Origin
-    {field: 'location.name', headerName:'Current Location',type: "editableColumn"} // Column for Current Location with custom editable logic
+    {field: 'location.name', headerName:'Current Location',type: "specialColumn"} // Column for Current Location with custom editable logic
     ],
 
     // Custom column types to handle editable logic and styling
     columnTypes:{
-      editableColumn:{
+      specialColumn:{
         editable: (params) => {
           return isEditable(params) // Check if the cell is editable based on the gender
         },
