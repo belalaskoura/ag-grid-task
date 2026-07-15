@@ -1,9 +1,9 @@
 import { useState } from "react";
 // Custom dropdown component for gender selection in the ag-grid
-export function GenderDropdown(props){
+export function GenderDropdown(props: any){
     const[value,setValue] = useState(props.value)
     // Function to handle changes in the dropdown selection
-    function handleChange(e){
+    function handleChange(e: React.ChangeEvent<HTMLSelectElement>){
         setValue(e.target.value)
         props.node.setDataValue(props.colDef.field, e.target.value) // Update the grid data with the new value
     }

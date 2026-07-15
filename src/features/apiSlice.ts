@@ -5,15 +5,20 @@ export interface Character {
     name: string;
     status: string;
     species: string;
-    type: string;
     gender: string;
     origin: {
-        name: string;
-        url: string;
-    };
+        name: string};
     location: {
-        name: string;
-        url: string;
+        name: string
+    };
+}
+export interface ApiResponse {
+    results: Character[];
+    info: {
+        count: number;
+        pages: number;
+        next: string | null;
+        prev: string | null;
     };
 }
 export const apiSlice = createApi({
@@ -22,7 +27,8 @@ export const apiSlice = createApi({
     endpoints: (builder) => ({
         getAllCharacters: builder.query<Character[], void>({
             query: () => 'character',
-        })
+            transformResponse: (response: ApiResponse ) => response.results
+        }),
     })
 });
 
