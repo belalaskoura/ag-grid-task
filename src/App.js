@@ -5,8 +5,8 @@ import { themeBalham } from 'ag-grid-community';
 import { useEffect, useState } from 'react';
 import {GenderDropdown} from './components/GenderDropdown'
 import './App.css'
-
 const modules = [AllCommunityModule];
+
 // Editable column logic
 let editableGender = "Male";
 function isEditable(params){
@@ -14,8 +14,8 @@ function isEditable(params){
 }
 
 function App(){
-  // State to hold the row data fetched from the API
-  const [rowData, setRowData] = useState([]);
+  const [rowData, setRowData] = useState([]);   // State to hold the row data fetched from the API
+
   // Grid options including column definitions and types
   const gridOptions = {
   colData:[
@@ -23,10 +23,11 @@ function App(){
     {field: 'name', headerName:'Name',filter:true, editable: true}, // Column for Name with filtering and editing enabled
     {field: 'status', headerName:'Status',editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: {values: ['Dead','Alive','Unknown']}}, // Column for Status with editing enabled and a dropdown editor
     {field: 'species', headerName:'Species'}, // Column for Species
-    {field: 'gender', headerName:'Gender', editable: true, cellEditor: GenderDropdown }, // Column for Gender with editing enabled
+    {field: 'gender', headerName:'Gender', editable: true, cellEditor: GenderDropdown }, // Column for Gender with editing enabled using the custom GenderDropdown component
     {field: 'origin.name', headerName:'Origin'}, // Column for Origin
     {field: 'location.name', headerName:'Current Location',type: "editableColumn"} // Column for Current Location with custom editable logic
     ],
+
     // Custom column types to handle editable logic and styling
     columnTypes:{
       editableColumn:{
@@ -47,7 +48,6 @@ function App(){
     fetch('https://rickandmortyapi.com/api/character')
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       return setRowData(data.results)})
   }, [])
 
