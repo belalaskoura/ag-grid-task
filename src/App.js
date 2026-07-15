@@ -52,16 +52,16 @@ function App(){
   }, [])
 
   return(
-    <AgGridProvider modules={modules}>
-      <div style={{height: 500}}>
-        <AgGridReact 
-          theme = {themeBalham}
-          rowData = {rowData}
-          columnDefs = {gridOptions.colData}
-          columnTypes={gridOptions.columnTypes}>
-        </AgGridReact>
-      </div>
-    </AgGridProvider>
+      <AgGridProvider modules={modules}>
+        <div style={{height: 500}}>
+          <AgGridReact 
+            theme = {themeBalham}
+            rowData = {rowData}
+            columnDefs = {gridOptions.colData}
+            columnTypes={gridOptions.columnTypes}>
+          </AgGridReact>
+        </div>
+      </AgGridProvider>
   )
 }
 
