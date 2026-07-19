@@ -46,7 +46,7 @@ export function App(){
   // Effect to update the row data when the API data changes
   useEffect(() => {
     if(data){
-      setRowData(data);
+      setRowData(data.map(char => ({...char, location: {...char.location}})))
     }
   }, [data]);
 
