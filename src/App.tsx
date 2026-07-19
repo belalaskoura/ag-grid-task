@@ -3,7 +3,7 @@ import { AllCommunityModule, CellValueChangedEvent, ValidationModule } from 'ag-
 import { SetFilterModule } from 'ag-grid-enterprise';
 import { AllEnterpriseModule } from 'ag-grid-enterprise';
 import { themeBalham } from 'ag-grid-community';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import {useGetAllCharactersQuery, Character} from './features/apiSlice';
 import { useColumnDefs } from './hooks/useColumnDefs';
 
@@ -11,8 +11,7 @@ const modules = [AllCommunityModule, ValidationModule,SetFilterModule, AllEnterp
 
 
 export function App(){
-  const [rowData, setRowData] = useState<Character[]>([]);   
-
+  const ref = useRef<AgGridReact<Character>>(null);
   const {colData, columnTypes, defaultColDef} = useColumnDefs()
 
   
@@ -21,8 +20,11 @@ export function App(){
   
   // Effect to update the row data when the API data changes
   useEffect(() => {
-    if(data){
-      setRowData(structuredClone(data))
+    if(data && ref.current?.api){
+      ref.current.api.setGridOption(
+        'rowData',
+        structuredClone(data)
+      )
     }
   }, [data]);
 
@@ -40,8 +42,8 @@ export function App(){
       <AgGridProvider modules={modules}> 
         <div style={{height: 500}}>
           <AgGridReact<Character>
+            ref = {ref}
             theme = {themeBalham}
-            rowData = {rowData}
             columnDefs = {colData}
             columnTypes={columnTypes}
             defaultColDef = {defaultColDef}
