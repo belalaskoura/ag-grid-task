@@ -1,5 +1,5 @@
 import {AgGridProvider, AgGridReact} from 'ag-grid-react';
-import { AllCommunityModule, ValidationModule } from 'ag-grid-community';
+import { AllCommunityModule, CellValueChangedEvent, ValidationModule } from 'ag-grid-community';
 import { SetFilterModule } from 'ag-grid-enterprise';
 import { AllEnterpriseModule } from 'ag-grid-enterprise';
 import { themeBalham } from 'ag-grid-community';
@@ -26,6 +26,16 @@ export function App(){
     }
   }, [data]);
 
+  function onCellValueChanged(params: CellValueChangedEvent<Character>){
+    if(params.colDef.field === 'gender'){
+      params.api.refreshCells({
+        rowNodes: [params.node],
+        columns: ['location.name'],
+        force: true
+      })
+    }
+  }
+
   return(
       <AgGridProvider modules={modules}> 
         <div style={{height: 500}}>
@@ -35,6 +45,7 @@ export function App(){
             columnDefs = {colData}
             columnTypes={columnTypes}
             defaultColDef = {defaultColDef}
+            onCellValueChanged={onCellValueChanged}
             >
             
           </AgGridReact>
