@@ -1,5 +1,5 @@
 import {AgGridProvider, AgGridReact} from 'ag-grid-react';
-import { AllCommunityModule} from 'ag-grid-community';
+import { AllCommunityModule, } from 'ag-grid-community';
 import { themeBalham, ColDef } from 'ag-grid-community';
 import { useEffect, useState } from 'react';
 import {GenderDropdown} from './components/GenderDropdown';
@@ -17,6 +17,7 @@ export function App(){
   const [rowData, setRowData] = useState<Character[]>([]);   
 
   // Grid options including column definitions and types
+  
   const colData: ColDef<Character>[] = [
     {field: 'id', headerName:'ID',sortable: true},
     {field: 'name', headerName:'Name',filter:true, editable: true},
