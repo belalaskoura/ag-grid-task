@@ -1,6 +1,6 @@
 import { Character } from "../features/apiSlice";
 import {ColDef} from "ag-grid-community"
-import { GenderDropdown } from "../components/GenderDropdown";
+import { GenderDropdown } from "../components/GenderDropdown/GenderDropdown";
 
 // Editable column logic
 const editableGender = "Male";
@@ -16,7 +16,7 @@ export function useColumnDefs(){
     {field: 'name', headerName:'Name', editable: true},
     {field: 'status', headerName:'Status',filter: 'agSetColumnFilter',editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: {values: ['Dead','Alive','Unknown']},filterParams:{values : ['Dead' , 'Alive', 'unknown']}}, 
     {field: 'species', headerName:'Species'}, 
-    {field: 'gender', headerName:'Gender', editable: true, cellEditor: GenderDropdown, filter: 'agSetColumnFilter', filterParams: {values: ['Male','Female']} }, 
+    {field: 'gender', headerName:'Gender', editable: true, cellEditor: GenderDropdown, filter: 'agSetColumnFilter', filterParams: {values: ['Male','Female']}, cellClass: 'gender-dropdown' }, 
     {field: 'location.name', headerName:'Current Location',type: "specialColumn"} 
     ]
 
