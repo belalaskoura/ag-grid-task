@@ -13,7 +13,7 @@ export function useColumnDefs(){
   // Grid options including column definitions and types  
   const colData: ColDef<Character>[] = [
     {field: 'id', headerName:'ID',sortable: true},
-    {field: 'name', headerName:'Name',filter:true, editable: true},
+    {field: 'name', headerName:'Name', editable: true},
     {field: 'status', headerName:'Status',editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: {values: ['Dead','Alive','Unknown']}}, 
     {field: 'species', headerName:'Species'}, 
     {field: 'gender', headerName:'Gender', editable: true, cellEditor: GenderDropdown }, 
@@ -33,5 +33,9 @@ export function useColumnDefs(){
         }
       }
     }
-  return {colData, columnTypes};
+
+    const defaultColDef: ColDef<Character> = {
+        filter: true,
+    }
+  return {colData, columnTypes, defaultColDef};
 }
