@@ -14,9 +14,9 @@ export function useColumnDefs(){
   const colData: ColDef<Character>[] = [
     {field: 'id', headerName:'ID',sortable: true},
     {field: 'name', headerName:'Name', editable: true},
-    {field: 'status', headerName:'Status',editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: {values: ['Dead','Alive','Unknown']}}, 
+    {field: 'status', headerName:'Status',filter: 'agSetColumnFilter',editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: {values: ['Dead','Alive','Unknown']},filterParams:{values : ['Dead' , 'Alive', 'unknown']}}, 
     {field: 'species', headerName:'Species'}, 
-    {field: 'gender', headerName:'Gender', editable: true, cellEditor: GenderDropdown }, 
+    {field: 'gender', headerName:'Gender', editable: true, cellEditor: GenderDropdown, filter: 'agSetColumnFilter', filterParams: {values: ['Male','Female']} }, 
     {field: 'location.name', headerName:'Current Location',type: "specialColumn"} 
     ]
 

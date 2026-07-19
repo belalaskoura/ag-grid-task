@@ -1,11 +1,14 @@
 import {AgGridProvider, AgGridReact} from 'ag-grid-react';
-import { AllCommunityModule, } from 'ag-grid-community';
+import { AllCommunityModule, ValidationModule } from 'ag-grid-community';
+import { SetFilterModule } from 'ag-grid-enterprise';
+import { AllEnterpriseModule } from 'ag-grid-enterprise';
 import { themeBalham } from 'ag-grid-community';
 import { useEffect, useState } from 'react';
 import {useGetAllCharactersQuery, Character} from './features/apiSlice';
 import { useColumnDefs } from './hooks/useColumnDefs';
 
-const modules = [AllCommunityModule];
+const modules = [AllCommunityModule, ValidationModule,SetFilterModule, AllEnterpriseModule];
+
 
 export function App(){
   const [rowData, setRowData] = useState<Character[]>([]);   
