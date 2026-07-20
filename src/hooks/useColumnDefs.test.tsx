@@ -1,6 +1,8 @@
-import { useColumnDefs } from './useColumnDefs'
+import { useColumnDefs, isEditable } from './useColumnDefs'
 import {describe, it, expect, vi} from 'vitest'
 import "@testing-library/jest-dom/vitest";
+import { Character } from '../features/apiSlice';
+
 
 describe('useColumnDefs', () => {
     it("Returns column definitions for all expected fields", () => {
@@ -41,4 +43,15 @@ describe('Special Column used by Location', () => {
         const params = {data: {gender: 'Male'}};
         expect(columnTypes.specialColumn.cellStyle(params)).toEqual({})
     })
+})
+
+// Testing isEditable
+describe("isEditable", ()=>{
+    it("returns true when gender is Male", () => {
+        expect(isEditable({data:  {gender: 'Male'} as Character})).toBe(true)
+    });
+
+    it("returns false when gender is Female", () => {
+        expect(isEditable({data:  {gender: 'Female'} as Character})).toBe(false)
+    });
 })

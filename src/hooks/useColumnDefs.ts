@@ -3,7 +3,7 @@ import {ColDef} from "ag-grid-community"
 import { CustomDropdown } from "../components/GenderDropdown/CustomDropdown";
 // Editable column logic
 const editableGender = "Male";
-function isEditable(params: {data: Character}){
+export function isEditable(params: {data: Character}){
   return params.data.gender === editableGender;
 }
 
