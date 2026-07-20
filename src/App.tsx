@@ -9,6 +9,16 @@ import { useColumnDefs } from './hooks/useColumnDefs';
 
 const modules = [AllCommunityModule, ValidationModule,SetFilterModule, AllEnterpriseModule];
 
+export function onCellValueChanged(params: CellValueChangedEvent<Character>){
+    if(params.colDef.field === 'gender'){
+      params.api.refreshCells({
+        rowNodes: [params.node],
+        columns: ['location.name'],
+        force: true
+      })
+    }
+  }
+
 
 export function App(){
   const ref = useRef<AgGridReact<Character>>(null);
@@ -27,17 +37,6 @@ export function App(){
       )
     }
   }, [data]);
-
-  function onCellValueChanged(params: CellValueChangedEvent<Character>){
-    if(params.colDef.field === 'gender'){
-      params.api.refreshCells({
-        rowNodes: [params.node],
-        columns: ['location.name'],
-        force: true
-      })
-    }
-  }
-
   return(
       <AgGridProvider modules={modules}> 
         <div style={{height: 500}}>

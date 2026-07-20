@@ -48,10 +48,10 @@ describe('Special Column used by Location', () => {
 // Testing isEditable
 describe("isEditable", ()=>{
     it("returns true when gender is Male", () => {
-        expect(isEditable({data:  {gender: 'Male'} as Character})).toBe(true)
+        expect(isEditable({data: {gender: 'Male'} as Character})).toBe(true)
     });
 
     it("returns false when gender is Female", () => {
-        expect(isEditable({data:  {gender: 'Female'} as Character})).toBe(false)
+        expect(isEditable({data: {gender: 'Female'} as Character})).toBe(false)
     });
 })
