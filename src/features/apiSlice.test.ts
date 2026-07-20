@@ -4,7 +4,7 @@ import { apiSlice } from "./apiSlice";
 import { mockResponse, server } from "./apiHandler";
 
 beforeAll(() => server.listen()); // Turn msw on before each test
-afterEach(() => server.resetHandlers()); // Wipe its mocks between tests
+afterEach(() => server.resetHandlers()); // Wipe mocks between tests
 afterAll(() => server.close()); // Turn msw off after test
 
 // Redux store for RTK query endpoint to work

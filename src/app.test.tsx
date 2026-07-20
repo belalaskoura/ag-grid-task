@@ -4,7 +4,7 @@ import {it,describe,expect,vi} from 'vitest';
 import { Character } from './features/apiSlice';
 
 // Helper Function that creates fake AG grid event that only returns the paramters used in onCellValueChanged
- function functionParams(field: string): CellValueChangedEvent<Character>{
+function functionParams(field: string): CellValueChangedEvent<Character>{
     return{
         colDef: {field},
         node: {id: '1'},
