@@ -1,9 +1,6 @@
-import React, { use } from "react";
-import {render, screen} from '@testing-library/react'
 import { useColumnDefs } from './useColumnDefs'
 import {describe, it, expect, vi} from 'vitest'
 import "@testing-library/jest-dom/vitest";
-import userEvent from '@testing-library/user-event'
 
 describe('useColumnDefs', () => {
     it("Returns column definitions for all expected fields", () => {
