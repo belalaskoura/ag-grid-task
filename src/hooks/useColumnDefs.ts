@@ -29,7 +29,7 @@ export function useColumnDefs(){
           if(!isEditable(params)){
             return {backgroundColor: '#000000', color: '#ffffff'} // Style for non-editable cells
           }
-          return {backgroundColor: '#ffffff', color: '#000000'}
+          return {}
         
         }
       }
