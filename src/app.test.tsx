@@ -39,3 +39,6 @@ describe("onCellValueChanged", () => {
     })
 })
 
+describe("renders characters", async () => {
+    
+})
