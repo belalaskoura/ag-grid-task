@@ -1,4 +1,3 @@
-import React, { use } from "react";
 import {render, screen} from '@testing-library/react'
 import { CustomDropdown } from "./CustomDropdown";
 import {describe, it, expect, vi} from 'vitest'
