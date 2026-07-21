@@ -1,12 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { afterAll,afterEach,beforeAll, describe, it, expect } from "vitest";
+import { describe, it, expect, beforeAll, afterAll, afterEach } from "vitest";
 import { apiSlice } from "./apiSlice";
 import { mockResponse, server } from "./apiHandler";
 
 beforeAll(() => server.listen()); // Turn msw on before each test
 afterEach(() => server.resetHandlers()); // Wipe mocks between tests
 afterAll(() => server.close()); // Turn msw off after test
-
 // Redux store for RTK query endpoint to work
 const store = configureStore({
     reducer: {[apiSlice.reducerPath]: apiSlice.reducer},

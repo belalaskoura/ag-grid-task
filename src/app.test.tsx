@@ -2,6 +2,10 @@ import {onCellValueChanged} from './App';
 import { CellValueChangedEvent} from 'ag-grid-community';
 import {it,describe,expect,vi} from 'vitest';
 import { Character } from './features/apiSlice';
+import {render, screen, within} from '@testing-library/react'
+import { ApiProvider } from '@reduxjs/toolkit/query/react';
+import { apiSlice } from './features/apiSlice';
+import {App} from './App'
 
 // Helper Function that creates fake AG grid event that only returns the paramters used in onCellValueChanged
 function functionParams(field: string): CellValueChangedEvent<Character>{
@@ -35,6 +39,25 @@ describe("onCellValueChanged", () => {
         onCellValueChanged(params)
 
         expect(params.api.refreshCells).not.toHaveBeenCalled()
+
+    })
+})
+
+// Function to render Application
+function renderApp(){
+   return render(
+    <ApiProvider api = {apiSlice}>
+    <App/>
+    </ApiProvider>
+   )
+}
+
+describe("App Test", () => {
+    it("applies conditional styling on location cell for a female character", async () => {
+        renderApp();
+        const femaleRow = (await screen.findByText("Summer Smith")).closest('.ag-row')
+        const locationCell = within(femaleRow as HTMLElement).getByText('Earth (Replacement Dimension)');
+        expect(locationCell).toHaveStyle({backgroundColor: '#000000', color: '#FFFFFF'})
 
     })
 })

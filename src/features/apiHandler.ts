@@ -1,7 +1,7 @@
 import {http, HttpResponse} from 'msw'
 import {setupServer} from 'msw/node'
 
-export const mockResponse =
+export const mockResponse =[
     {
         id: 1,
         name: "Rick Sanchez",
@@ -10,8 +10,16 @@ export const mockResponse =
         gender: 'Male',
         location:{name: 'Citadel of Ricks'}
 
-    };
-
+    },
+    {
+        id: 2,
+        name: "Summer Smith",
+        status: "Alive",
+        species: 'Human',
+        gender: 'Female',
+        location: {name: 'Earth (Replacement'}
+    }
+]
 export const apiHandler = [
     http.get('https://rickandmortyapi.com/api/character', () => {
         return HttpResponse.json({
