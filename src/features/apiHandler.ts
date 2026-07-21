@@ -17,7 +17,7 @@ export const mockResponse =[
         status: "Alive",
         species: 'Human',
         gender: 'Female',
-        location: {name: 'Earth (Replacement'}
+        location: {name: 'Earth (Replacement Dimension)'}
     }
 ]
 export const apiHandler = [

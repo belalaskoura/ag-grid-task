@@ -8,7 +8,7 @@ describe('useColumnDefs', () => {
     it("Returns column definitions for all expected fields", () => {
         const {colData} = useColumnDefs()
         const fields = colData.map((col) => col.field);
-        expect(fields).toEqual(['id','name','status','species','gender','location.name'])
+        expect(fields).toEqual(['id','name','species','gender','origin.name','status','location.name'])
     })
 
     it("Sets Filter property by default on all columns", () => {

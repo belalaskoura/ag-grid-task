@@ -2,7 +2,7 @@ import { onCellValueChanged } from './pages/Character Grid/CharacterGrid';
 import { CellValueChangedEvent} from 'ag-grid-community';
 import {it,describe,expect,vi} from 'vitest';
 import { Character } from './features/apiSlice';
-import {render, screen, within} from '@testing-library/react'
+import {render, screen, within, fireEvent} from '@testing-library/react'
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
 import { apiSlice } from './features/apiSlice';
 import {App} from './App'
@@ -57,8 +57,12 @@ function renderApp(){
 describe("App Test", () => {
     it("applies conditional styling on location cell for a female character", async () => {
         renderApp();
+        const button = screen.getByRole('button', {name: 'Explore Characters →'});
+        fireEvent.click(button);
+
         const femaleRow = (await screen.findByText("Summer Smith")).closest('.ag-row')
-        const locationCell = within(femaleRow as HTMLElement).getByText('Earth (Replacement Dimension)');
+        const locationCell = (femaleRow as HTMLElement).querySelector('[col-id="location.name"]')
+        expect(locationCell).toBeInTheDocument()
         expect(locationCell).toHaveStyle({backgroundColor: '#000000', color: '#FFFFFF'})
 
     })
