@@ -6,6 +6,8 @@ import {render, screen, within} from '@testing-library/react'
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
 import { apiSlice } from './features/apiSlice';
 import {App} from './App'
+import {server} from './features/apiHandler'
+import { HttpResponse, http } from 'msw';
 
 // Helper Function that creates fake AG grid event that only returns the paramters used in onCellValueChanged
 function functionParams(field: string): CellValueChangedEvent<Character>{
@@ -59,5 +61,14 @@ describe("App Test", () => {
         const locationCell = within(femaleRow as HTMLElement).getByText('Earth (Replacement Dimension)');
         expect(locationCell).toHaveStyle({backgroundColor: '#000000', color: '#FFFFFF'})
 
+    })
+
+    it('does not crash when API request fails', async () => {
+        server.use(http.get("https://rickandmortyapi.com/api/character", () =>{
+            return HttpResponse.error()
+        }))
+        renderApp();
+        expect(await screen.findByText('Name')).toBeInTheDocument()
+        expect(await screen.queryByText('Rick Sanchez')).not.toBeInTheDocument()
     })
 })
