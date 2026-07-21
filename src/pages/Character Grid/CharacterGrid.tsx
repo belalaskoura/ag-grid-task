@@ -78,16 +78,15 @@ export function CharacterGrid() {
               left: mousePosition.x + 15, 
               position: 'fixed',
               pointerEvents: 'none',
-              zIndex: 9999, 
-              backgroundColor: '#333',
+              zIndex: 1, 
+              backgroundColor: '#303234',
               fontWeight: 'bold',
               fontFamily: 'Arial, sans-serif',
-              color: '#fff',
+              color: '#ffffff',
               padding: '6px 10px',
               borderRadius: '4px',
               fontSize: '12px'
-            }}
-          >
+            }}>
             Location cannot be edited for Female characters
           </div>
         )}
