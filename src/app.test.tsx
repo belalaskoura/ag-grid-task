@@ -1,4 +1,4 @@
-import {onCellValueChanged} from './App';
+import { onCellValueChanged } from './pages/CharacterGrid';
 import { CellValueChangedEvent} from 'ag-grid-community';
 import {it,describe,expect,vi} from 'vitest';
 import { Character } from './features/apiSlice';
