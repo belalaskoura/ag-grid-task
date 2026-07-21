@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home/Home";
-import {CharacterGrid} from "./pages/CharacterGrid";
+import {CharacterGrid} from "./pages/Character Grid/CharacterGrid";
 export function App(){
   return (
     <BrowserRouter>
