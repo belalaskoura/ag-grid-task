@@ -13,10 +13,11 @@ export function useColumnDefs(){
   const colData: ColDef<Character>[] = [
     {field: 'id', headerName:'ID',sortable: true},
     {field: 'name', headerName:'Name', editable: true},
+    {field: 'species', headerName:'Species'},
+    {field: 'gender', headerName:'Gender', editable: true, cellEditor: CustomDropdown, filter: 'agSetColumnFilter', filterParams: {values: ['Male','Female']}, cellClass: 'dropdown', cellEditorParams:{values: ['Male','Female']}},
+    {field: 'origin.name', headerName:'Origin'}, 
     {field: 'status', headerName:'Status',filter: 'agSetColumnFilter',editable: true, cellEditor: CustomDropdown, cellEditorParams: {values: ['Dead','Alive','Unknown']},filterParams:{values : ['Dead' , 'Alive', 'unknown']}, cellClass: 'dropdown'}, 
-    {field: 'species', headerName:'Species'}, 
-    {field: 'gender', headerName:'Gender', editable: true, cellEditor: CustomDropdown, filter: 'agSetColumnFilter', filterParams: {values: ['Male','Female']}, cellClass: 'dropdown', cellEditorParams:{values: ['Male','Female']}}, 
-    {field: 'location.name', headerName:'Current Location',type: "specialColumn"} 
+    {field: 'location.name', headerName:'Last Known Location',type: "specialColumn"} 
     ]
 
     // Custom column types to handle editable logic and styling
